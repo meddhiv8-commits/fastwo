@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: fastwo-marketplace
+    runtime: node
+    plan: free
+    buildCommand: npm ci --prefix frontend && npm ci --prefix backend && npm run build --prefix frontend
+    startCommand: node backend/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: APP_PUBLIC_URL
+        sync: false
