@@ -2,6 +2,16 @@
 
 This repository can deploy as one Render web service. Express serves both the Vite build and `/api/*` from the same origin, so production does not need a separate frontend URL or CORS allowlist.
 
+## Netlify Frontend
+
+Netlify can host the static frontend, but the API must run separately. Deploy the backend to Render using the steps below, then:
+
+1. Import the repository into Netlify. `netlify.toml` configures the frontend build and publishes `frontend/dist`; keep the repository root as the base directory.
+2. In Netlify site environment variables, set `VITE_FASTWO_AUTH_API` to the public HTTPS URL of the Render service, without a trailing slash (for example, `https://fastwo-marketplace.onrender.com`).
+3. Trigger a new deploy so Vite includes the API URL in the frontend build.
+
+Without this variable, production requests use the Netlify site origin and cannot reach the backend. Do not set it to `localhost`.
+
 ## Render Blueprint
 
 1. Push this repository to GitHub or GitLab.
