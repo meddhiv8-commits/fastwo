@@ -1,7 +1,11 @@
 [build]
   base = "frontend"
-  command = "npm install && npm run build"
+  command = "npm ci && npm run build"
   publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  VITE_FASTWO_AUTH_API = "https://fastwo1.onrender.com"
 
 [[redirects]]
   from = "/*"
