@@ -6,6 +6,7 @@
 [build.environment]
   NODE_VERSION = "20"
   VITE_FASTWO_AUTH_API = "https://fastwo1.onrender.com"
+  SECRETS_SCAN_OMIT_KEYS = "VITE_FASTWO_AUTH_API"
 
 [[redirects]]
   from = "/*"
